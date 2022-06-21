@@ -14,7 +14,8 @@ def cursos(request):
 
 
 def eventos(request):
-    return render(request,"ProyectoCursosApp/eventos.html",{})
+    eventos = Evento.objects.all()
+    return render(request,"ProyectoCursosApp/eventos.html",{"eventos":eventos})
 
 def base(request):
     return render(request,"ProyectoCursosApp/base.html",{})
