@@ -8,12 +8,22 @@ Cursos - Cursos & Eventos 4ALL
 
 
 {% block contenidoPagina%}
-<section class="bg-ligth py-5">
-    Los Cursos son:
-    <ul class="list-group">
-        {%for curso in cursos%}
-            <li>{{curso.nombre_curso}}[{{curso.comision_curso}}]</li>
-        {%endfor%}    
-    </ul>
-</section>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Los Cursos</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Encontra los mejores Cursos</p>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="bg-ligth py-5">
+            Los Cursos son:
+            <ul class="list-group">
+                {%for curso in cursos%}
+                    <li>{{curso.nombre_curso}}[{{curso.comision_curso}}]</li>
+                {%endfor%}    
+            </ul>
+        </section>
 {%endblock%}
