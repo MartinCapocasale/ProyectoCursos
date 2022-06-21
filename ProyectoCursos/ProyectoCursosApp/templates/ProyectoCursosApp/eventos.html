@@ -21,8 +21,8 @@ Eventos - Cursos & Eventos 4ALL
     <section class="bg-ligth py-5">
         Los Eventos son:
         <ul class="list-group">
-            {%for curso in cursos%}
-                <li>{{eventos.nombre}}[{{curso.comision}}]</li>
+            {%for evento in eventos%}
+                <li>{{evento.nombre_evento}}[{{evento.lugar_evento}}]</li>
             {%endfor%}    
         </ul>
     </section>
