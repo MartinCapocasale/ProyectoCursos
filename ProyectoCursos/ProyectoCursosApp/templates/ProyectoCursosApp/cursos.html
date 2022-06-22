@@ -3,7 +3,7 @@
 
 
 {% block tituloPagina %}
-Cursos - Cursos & Eventos 4ALL
+Cursos - Cursos & cursos 4ALL
 {%endblock%}
 
 {% block tituloHeader %}
@@ -15,13 +15,26 @@ Lo mejores Cursos
 {% endblock %}
 
 {% block contenidoPagina%}
-        <!-- Section-->
-        <section class="bg-ligth py-5">
-            Los Cursos son:
-            <ul class="list-group">
-                {%for curso in cursos%}
-                    <li>{{curso.nombre_curso}}[{{curso.comision_curso}}]</li>
-                {%endfor%}    
-            </ul>
-        </section>
+    <!-- Section-->
+    <section class="py-5">
+        {%for curso in cursos%}
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">{{curso.nombre_curso}}</h4>
+                                <!-- Product image-->
+                                <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                <p class="card-text">Comision: {{curso.comision_curso}}</p>
+                                <p class="card-text">Cantidad de cupos: {{curso.cantidad_maxima_de_personas_curso}}</p>
+                                <a href="#" class="btn btn-primary">Asistir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        {%endfor%}
+    </section> 
+    
 {%endblock%}
