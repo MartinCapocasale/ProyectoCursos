@@ -16,12 +16,22 @@ Lo mejores Eventos
 
 {% block contenidoPagina%}
     <!-- Section-->
-    <section class="bg-ligth py-5">
-        Los Eventos son:
-        <ul class="list-group">
-            {%for evento in eventos%}
-                <li>{{evento.nombre_evento}}[{{evento.lugar_evento}}]</li>
-            {%endfor%}    
-        </ul>
-    </section>
+    <section class="py-5">
+        {%for evento in eventos%}
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row">
+                    <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title">{{evento.nombre_evento}}</h5>
+                        <p class="card-text">{{evento.descripcion_evento}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+            </div>
+        {%endfor%}
+    </section>    
+    
 {%endblock%}
