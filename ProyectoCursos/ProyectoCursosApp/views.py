@@ -19,3 +19,7 @@ def eventos(request):
 
 def base(request):
     return render(request,"ProyectoCursosApp/base.html",{})
+
+
+def crear_curso(request):
+    return render(request,"ProyectoCursosApp/formulario_curso.html",{})
