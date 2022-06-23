@@ -1,0 +1,37 @@
+{% extends 'ProyectoCursosApp/base.html'%}
+{%load static%}
+
+
+{% block tituloPagina %}
+Buscar Cursos - Cursos & Eventos 4ALL
+{%endblock%}
+
+{% block tituloHeader %}
+La Busqueda
+{% endblock %}
+
+{% block tituloEpigrafe %}
+Busqueda de Cursos
+{% endblock %}
+
+{% block contenidoPagina%}
+<p>Buscar comision:
+    <form action="" method = "post">
+        {% csrf_token %}
+        <!--
+        <p>Curso: <input type="text" name="nombre_curso" id="" maxlength="30"> </p>-->
+        <input type="number" name="comision_curso" id="" min="0">
+        {{form.as_p}}
+
+
+        <input type="Submit" value = "Buscar">
+
+    </form>
+</p>
+
+<p>Resultado:</p>
+<ul>{%for resultado in comisiones%}
+    <li>{{resultado.comision_curso}} - {{resultado.nombre_curso}}</li>
+    {%endfor%}
+</ul>    
+{%endblock%}

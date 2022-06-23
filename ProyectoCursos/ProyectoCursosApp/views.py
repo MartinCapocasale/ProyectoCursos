@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 
 # Create your views here.
@@ -24,11 +25,31 @@ def base(request):
 def crear_curso(request):
     #Post
     if request.method == "POST":
-        info_formulario = request.POST
-        curso = Curso(nombre_curso = info_formulario["nombre_curso"],comision_curso = int(info_formulario["comision_curso"]),cantidad_maxima_de_personas_curso = int(info_formulario["cantidad_maxima_de_personas_curso"]))
-        
-        curso.save()
-        return redirect("cursos")#te redirecciono a la pagina de inicio
+        formulario = NuevoCurso(request.POST)
+
+        if formulario.is_valid():
+            info_curso = formulario.cleaned_data
+
+            curso = Curso(nombre_curso = info_curso["nombre_curso"],comision_curso = int(info_curso["comision_curso"]),cantidad_maxima_de_personas_curso = int(info_curso["cantidad_maxima_de_personas_curso"]))
+            
+            curso.save()#guardamos en la bdd
+            
+            return redirect("cursos")#te redirecciono a la pagina de inicio
+        else:
+            return render(request,"ProyectoCursosApp/formulario_curso.html",{"form":formularioVacio})
+
     #Get y otros
     else:
-        return render(request,"ProyectoCursosApp/formulario_curso.html",{})
+        formularioVacio = NuevoCurso()
+        return render(request,"ProyectoCursosApp/formulario_curso.html",{"form":formularioVacio})
+
+
+def buscar_comision(request):
+    if request.method == "POST":
+        comision = request.POST["comision_curso"]
+        comisiones = Curso.objects.filter(comision_curso__icontains=comision)
+        return render(request,"ProyectoCursosApp/buscar_comision.html",{"comisiones":comisiones})
+
+    else:
+        comisiones = []
+        return render(request,"ProyectoCursosApp/buscar_comision.html",{"comisiones":comisiones})
