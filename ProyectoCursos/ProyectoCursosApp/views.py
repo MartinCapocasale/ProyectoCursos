@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import *
 
@@ -29,6 +29,7 @@ def crear_curso(request):
         curso = Curso(info_formulario("nombre_curso"),info_formulario("comision_curso"),info_formulario("cantidad_maxima_de_personas_curso"))
         
         curso.save()
+        return redirect("inicio")#te redirecciono a la pagina de inicio
     #Get y otros
     else:
         return render(request,"ProyectoCursosApp/formulario_curso.html",{})
