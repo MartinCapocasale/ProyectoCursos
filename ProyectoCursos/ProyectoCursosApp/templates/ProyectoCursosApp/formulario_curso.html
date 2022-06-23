@@ -1,1 +1,31 @@
-agregando curso
+{% extends 'ProyectoCursosApp/base.html'%}
+{%load static%}
+
+
+{% block tituloPagina %}
+Cursos - Cursos & Eventos 4ALL
+{%endblock%}
+
+{% block tituloHeader %}
+Los Cursos
+{% endblock %}
+
+{% block tituloEpigrafe %}
+Formulario de Cursos
+{% endblock %}
+
+{% block contenidoPagina%}
+<h2>Crea un Curso Nuevo</h2>
+<form action="" method = "post">
+    {% csrf_token %}
+    <p>Curso: <input type="text" name="nombre_curso" id=""> </p>
+
+    <p>Comision: <input type="number" name="comision_curso" id="" min="0"></p>
+
+    <p>Cupo de estudiantes: <input type="number" name="cantidad_maxima_de_personas_curso" id="" min="1"></p>
+
+    <input type="Submit" value = "Crear Curso">
+
+</form>
+    
+{%endblock%}
