@@ -22,4 +22,18 @@ def base(request):
 
 
 def crear_curso(request):
+
+    #Get
+    if  request.method == "GET":
+        pass
+
+    #Post
+    elif request.method == "POST":
+        info_formulario = request.POST
+        curso = Curso(info_formulario("nombre_curso"),info_formulario("comision_curso"),info_formulario("cantidad_maxima_de_personas_curso"))
+        
+        curso.save()
+    else:
+        pass
+
     return render(request,"ProyectoCursosApp/formulario_curso.html",{})
