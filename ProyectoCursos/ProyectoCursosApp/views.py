@@ -22,14 +22,13 @@ def base(request):
 
 
 def crear_curso(request):
-
     #Post
     if request.method == "POST":
         info_formulario = request.POST
-        curso = Curso(info_formulario("nombre_curso"),info_formulario("comision_curso"),info_formulario("cantidad_maxima_de_personas_curso"))
+        curso = Curso(nombre_curso = info_formulario["nombre_curso"],comision_curso = int(info_formulario["comision_curso"]),cantidad_maxima_de_personas_curso = int(info_formulario["cantidad_maxima_de_personas_curso"]))
         
         curso.save()
-        return redirect("inicio")#te redirecciono a la pagina de inicio
+        return redirect("cursos")#te redirecciono a la pagina de inicio
     #Get y otros
     else:
         return render(request,"ProyectoCursosApp/formulario_curso.html",{})
