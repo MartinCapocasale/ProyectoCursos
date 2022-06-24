@@ -5,6 +5,7 @@ from .models import *
 
 class CursoAdmin(admin.ModelAdmin):
     list_display = ("nombre_curso",)
+    search_fields = ("nombre_curso",)
 
 class EventoAdmin(admin.ModelAdmin):
     list_display = ("nombre_evento",)
