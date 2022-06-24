@@ -50,6 +50,6 @@ def buscar_comision(request):
         comisiones = Curso.objects.filter(comision_curso__icontains=comision)
         return render(request,"ProyectoCursosApp/buscar_comision.html",{"comisiones":comisiones})
 
-    else:
+    else: 
         comisiones = []
         return render(request,"ProyectoCursosApp/buscar_comision.html",{"comisiones":comisiones})
